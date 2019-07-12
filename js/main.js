@@ -461,11 +461,14 @@ class myApp {
        
     constructor(obj){
         this.obj = obj;
+        this.priceAsc=true;
+        this.jackpotAsc=true;
     }
     
     prepareElement(obj){
         let item = 
-        `<div class="jackpot_wrapper"> 
+        `<div class="jackpot_wrapper">
+            <button type="button" class="delete_wrapper" data-id=${obj.PackageID}>x</button>
             <div class="jackpot_name">${obj.DisplayName}</div>
             <div class="jackpot_price">${obj.PackagePrice}</div>
         </div>`;
@@ -484,11 +487,72 @@ class myApp {
         let parent = document.getElementById('objects_holder');
         parent.innerHTML = this.getData();
     };
+    
+    priceSortAsc(){
+        this.obj = this.obj
+                            .sort((a,b) => {
+                                return parseFloat(a.OriginPrice) - parseFloat(b.OriginPrice)
+                            });
+        this.pushData();
+    }
+
+    priceSort(){
+        if(!this.priceAsc){
+            this.obj = this.obj
+                .sort((a,b) => {
+                    return parseFloat(a.OriginPrice) - parseFloat(b.OriginPrice)
+                });
+            this.priceAsc=true;
+        }
+        else{
+            this.obj = this.obj
+                .sort((a,b) => {
+                    return parseFloat(b.OriginPrice) - parseFloat(a.OriginPrice)
+                });
+            this.priceAsc=false;
+        }
+
+        this.pushData();
+    }
+
+    jackpotSort(){
+        if(!this.jackpotAsc){
+            this.obj = this.obj
+                .sort((a,b) => {
+                    return a.Items[0].JackpotAmount - b.Items[0].JackpotAmount
+                });
+            this.jackpotAsc=true;
+        }
+        else{
+            this.obj = this.obj
+                .sort((a,b) => {
+                    return b.Items[0].JackpotAmount - a.Items[0].JackpotAmount
+                });
+            this.jackpotAsc=false;
+        }
+
+        this.pushData();
+    }
+
+    removeElement(id){
+        
+        this.obj = this.obj
+            .filter(element => parseInt(element.PackageID) != parseInt(id));
+
+        this.pushData();
+    }
 
     run(){
         this.pushData();
+    
+        document.getElementById('sort_price').addEventListener('click', this.priceSort.bind(this));
+        document.getElementById('sort_jackpot').addEventListener('click', this.jackpotSort.bind(this));
 
 
+        document.getElementById('objects_holder').addEventListener('click',(e) => {
+            if(e.target.classList.contains('delete_wrapper')){
+                this.removeElement(e.target.getAttribute('data-id'));
+            }
+        });
     }
-
 }

@@ -9,12 +9,12 @@
 			
 		</div>
 		<div id="sort_section">
-			<a class="sort_by_price"></a>
-			<a class="sort_by_jackpot"></a>
+			<button type="button" id="sort_price" class="btn"> Cena rosnąco </button>
+			<button type="button" id="sort_jackpot" class="btn"> Wygrana rosnąco </button>
 		</div>
 		<script src="js/main.js"></script>
 		<script>
-			var myapp = new myApp(jackpots);
+			const myapp = new myApp(jackpots);
 			myapp.run();
 		</script>
 	</body>
