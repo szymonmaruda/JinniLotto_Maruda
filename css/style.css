@@ -1,0 +1,59 @@
+#objects_holder {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+#objects_holder .jackpot_wrapper {
+  flex-grow: 1;
+  text-align: center;
+  border-radius: 10px;
+  padding: 30px 10px;
+  margin: 10px;
+  border: 1px solid #f1f1f1;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+#objects_holder .jackpot_wrapper .delete_wrapper {
+  background: none;
+  border: 0;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 1.3em;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+#objects_holder .jackpot_wrapper .delete_wrapper:hover {
+  opacity: 0.6;
+}
+#objects_holder .jackpot_wrapper .jackpot_name {
+  margin-bottom: 20px;
+  font-size: 1.2em;
+}
+#objects_holder .jackpot_wrapper .jackpot_price {
+  font-size: 1.2em;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+#objects_holder .jackpot_wrapper .jackpot_amount {
+  font-size: 1.2em;
+  font-weight: 600;
+}
+#sort_section {
+  padding: 20px 10px;
+}
+#sort_section .btn {
+  color: #fff;
+  background-color: #28a745;
+  border: 1px solid #28a745;
+  padding: 10px;
+  border-radius: 0.25rem;
+  font-size: 1.03em;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+#sort_section .btn:hover {
+  opacity: 0.7;
+}
